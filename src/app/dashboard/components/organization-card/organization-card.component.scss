@@ -1,0 +1,83 @@
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+.organization {
+	&-title {
+		font-family: 'Tomkin';
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 32px;
+		margin-right: 28px;
+	}
+
+	&-logo {
+		min-width: 50px;
+		height: 50px;
+		width: 50px;
+		margin-right: 28px;
+	}
+}
+
+.header-wrapper {
+	width: 100%;
+	padding: 16px 12px 28px 12px;
+	border-bottom: 2px solid #EFEFEF;
+}
+
+.content-wrapper {
+	padding: 28px 12px 16px 12px;
+	width: 100%;
+}
+
+.stats {
+	&-wrapper {
+		gap: 10px;
+	}
+
+	&-column {
+		width: 100%;
+		gap: 8px;
+	}
+
+	&-title {
+		margin-bottom: 16px;
+	}
+}
+
+
+
+.stat {
+	&-entity {
+		&-wrapper {
+			width: 100%;
+			&__in-use {
+				margin-bottom: 28px;
+			}
+		}
+
+		&-name {
+			width: 80px;
+		}
+
+		&-value {
+			padding: 0 16px;
+		}
+	}
+}
+
+
+.content-title {
+	margin-bottom: 32px;
+}
+
+.context-menu-icon {
+    color: #8F9AAB;
+
+	&__main {
+		width: 32px;
+		height: 32px;
+		font-size: 32px;
+	}
+}
+

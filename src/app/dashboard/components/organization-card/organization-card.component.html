@@ -1,0 +1,66 @@
+<mat-card *ngIf="organizationData">
+	<mat-card-header >
+		<div class="header-wrapper flex justify-between items-center">
+			<div class="header-logo-title-wrapper truncate flex items-center">
+				<div class="organization-logo" [ngStyle]="{'background-image': 'url(' + organizationData.logoSrc + ')'}"></div>
+				<h1 class="organization-title truncate">{{organizationData.title}}</h1>
+			</div>
+			<div class="context-menu">
+				<button style="padding: 8px;" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Context Menu">
+					<mat-icon class="context-menu-icon context-menu-icon__main">more_vert</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+				<!-- <button mat-menu-item>
+					<mat-icon class="context-menu-icon">subdirectory_arrow_right</mat-icon>
+					<span>Go to Organization</span>
+				</button> -->
+				<button (click)="onDeleteClick(organizationData.id)" mat-menu-item>
+					<mat-icon class="context-menu-icon">block</mat-icon>
+					<span>Delete Organization</span>
+				</button>
+				</mat-menu>
+			</div>
+		</div>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="content-wrapper">
+			<p class="content-title container font-medium">Licenses</p>
+			<div class="stats-wrapper flex md:flex-row ">
+				<div class="stats-column">
+					<p class="stats-title font-medium">Tracking</p>
+					<div class="stat-entity-wrapper flex stat-entity-wrapper__in-use">
+						<p class="stat-entity-name">In use:</p>
+						<p class="stat-entity-value font-medium text-green-600">{{organizationData.tracking.inUse}}</p>
+					</div>
+					<div class="stat-entity-wrapper flex items-baseline">
+						<p class="stat-entity-name">Assigned:</p>
+						<div class="stat-entity-input">
+							<mat-form-field [style.width.px]=95 appearance="fill">
+								<input matInput type="number" (change)="onPatchValue(organizationData.id, 'tracking', organizationData.tracking.assigned)" [(ngModel)]="organizationData.tracking.assigned">
+							  </mat-form-field>
+						</div>
+					</div>
+				</div>
+				<div class="stats-column">
+					<p class="stats-title font-medium">Protection</p>
+					<div class="stat-entity-wrapper flex stat-entity-wrapper__in-use">
+						<p class="stat-entity-name">In use:</p>
+						<p class="stat-entity-value font-medium text-red-600">{{organizationData.protection.inUse}}</p>
+					</div>
+					<div class="stat-entity-wrapper flex items-baseline">
+						<p class="stat-entity-name">Assigned:</p>
+						<div class="stat-entity-input">
+							<mat-form-field [style.width.px]=95 appearance="fill">
+								<input 	matInput 
+										type="number" 
+										[(ngModel)]="organizationData.protection.assigned"
+										(change)="onPatchValue(organizationData.id, 'protection', organizationData.protection.assigned)">
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</mat-card-content>
+</mat-card>

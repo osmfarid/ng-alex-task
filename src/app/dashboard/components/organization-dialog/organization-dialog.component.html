@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add New Organization</h1>
+<div mat-dialog-content>
+  <form [formGroup]="organizationForm"
+        (ngSubmit)="onFormSubmit(organizationForm.value)">
+    <div class="form-fields-wrapper flex flex-col">
+      <mat-form-field appearance="fill">
+        <mat-label>Organization Name</mat-label>
+        <input formControlName="title" matInput required>
+        <mat-error>
+          Organization Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div formGroupName="tracking" class="tracking-wrapper flex gap-1">
+        <mat-form-field appearance="fill">
+          <mat-label>Trackings In Use</mat-label>
+          <input formControlName="inUse" type="number" matInput required>
+          <mat-error>
+            Trackings In Use is <strong>required</strong> and can't be <strong>zero</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Assigned Trackings</mat-label>
+          <input formControlName="assigned" type="number" matInput required>
+          <mat-error>
+            Assigned Trackings is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div formGroupName="protection" class="protection-wrapper flex gap-1">
+        <mat-form-field appearance="fill">
+          <mat-label>Protection In Use</mat-label>
+          <input formControlName="inUse" type="number" matInput required>
+          <mat-error>
+            Protection In Use is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Assigned Protection</mat-label>
+          <input formControlName="assigned" type="number" matInput required>
+          <mat-error>
+            Assigned Trackings is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>    
+      <div mat-dialog-actions>
+        <button type="submit" [disabled]="organizationForm.invalid" mat-raised-button color="primary">Submit</button>
+        <button mat-button mat-dialog-close>Close</button>
+      </div>
+    </form>
+</div>

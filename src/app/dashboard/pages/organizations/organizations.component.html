@@ -1,1 +1,25 @@
-<p>test</p>
+
+<div class="wrapper">
+	<header class="header-wrapper flex justify-between flex-col">
+		<div class="header-upper-row flex justify-between items-center">
+			<div class="organizations-title align-middle whitespace-nowrap">Organizations ({{ (organizations$ | async)?.length }})</div>
+			
+			<div class="button-wrapper flex">
+				<button class="whitespace-nowrap" mat-raised-button color="primary" (click)="openDialog()">Add New Organization</button>
+			</div>
+		</div>
+		<div class="search-input-wrapper">
+			<mat-form-field class="search-input" appearance="outline">
+				<input [formControl]="filter" placeholder="Search organization" matInput>
+			  </mat-form-field>
+		</div>
+	</header>
+	<div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-14">
+		<app-organization-card 
+			*ngFor="let organization of organizations$ | async"
+			[organizationData]="organization"
+			(deleteOrganizationClick)="deleteOrganization($event)"
+			(patchValue)="changeAssignedValue($event)"
+		></app-organization-card>
+	</div>
+</div>
